@@ -2,12 +2,14 @@ import Paper from '@mui/material/Paper';
 
 const PageContent = (props) => {
     const styles = {
+        display:"flex",
+        justifyContent:"center",
         padding: 0,
         margin: 0,
-        backgroundColor: "#e3e2e2",
+        backgroundColor: "#f2f2f2",
         height: "100vh",
         width: "100vw",
-        overflowY:"auto"
+        overflowY:"auto",
     };
 
     return (

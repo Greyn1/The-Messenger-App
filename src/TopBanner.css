@@ -1,0 +1,49 @@
+.topBanner-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    z-index: 5;
+    height: 27%;
+    margin: 20px auto;
+    box-shadow: 2px 2px 2px 2px #aaaaaa;
+}
+
+.topBanner-container:hover{
+
+}
+
+.heading{
+    font-size:2rem;
+    font-weight: 600;
+}
+
+.heading-1{
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.img-button-container{
+    display: flex;
+    width: 60%;
+    margin-top: 7px;
+}
+
+.img-container{
+    margin: 0 5px;
+}
+
+img{
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+}
+
+.chip{
+    width:90%;
+    cursor: pointer;
+    border-radius: 40px;
+}

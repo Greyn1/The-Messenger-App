@@ -1,11 +1,12 @@
-import './App.css';
 import PageContent from './PageContent';
+import TopBanner from './TopBanner';
+import './App.css';
 
 function App() {
   return (
     <>
       <PageContent>
-        <h1>The Messenger App</h1>
+        <TopBanner />
       </PageContent>
     </>
   );
