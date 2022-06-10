@@ -1,0 +1,44 @@
+$color1 : #161719;
+$color2 : #26272b;
+$text : #9fa2a7;
+$highlight1 : #56b273;
+$highlight2 : #b388dd;
+$highlight3 : #ff8750;
+$highlight4 : #01AD9B;
+
+.message-card-container{
+    display: flex;
+}
+
+.messageBubble {
+    display: inline-block;
+    position: relative;
+    background-color: $highlight2;
+    color: whitesmoke;
+    font-size: 1em;
+    line-height: 1.75;
+    padding: 15px 25px;
+    margin-bottom: 25px;
+    cursor: default;
+    border-radius: 10px;
+    min-width: fit-content;
+    max-width: 400px;
+    min-height: fit-content;
+    max-height: max-content;
+}
+
+.delete-button-container{
+    display: flex;
+    position: absolute;
+    right: 2px;
+    top:2px;
+}
+
+.deleteIcon{
+    transition: "all 3s ease";
+    cursor: pointer;
+}
+
+.deleteIcon:hover{
+    transform: scale(1.1);
+}

@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 const PageContent = (props) => {
     const styles = {
         display:"flex",
-        justifyContent:"center",
+        flexDirection:"column",
         padding: 0,
         margin: 0,
         backgroundColor: "#f2f2f2",
