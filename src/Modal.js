@@ -6,11 +6,12 @@ import GifSearch from "./GifSearch";
 import './Modal.scss';
 
 const Modal = () => {
-    const { isModalOpen, toggleIsModalOpen, addMessage, isGifSearchOpen, toggleIsGifSearchOpen } = useContext(MessageContext);
+    const { isModalOpen, toggleIsModalOpen, addMessage, isGifSearchOpen, toggleIsGifSearchOpen, gifUrl, handleSetGifUrl } = useContext(MessageContext);
     const [newMessage, setNewMessage] = useState("");
 
     const handleClose = () => {
         toggleIsModalOpen(!isModalOpen);
+        handleSetGifUrl("");
     }
 
     const handleChange = (evt) => {
@@ -23,6 +24,7 @@ const Modal = () => {
 
     const reset = () => {
         setNewMessage("");
+        handleSetGifUrl("");
     }
 
     return (
@@ -41,19 +43,23 @@ const Modal = () => {
                         <div className="modalContent">
                             <form onSubmit={(e)=>{
                                             e.preventDefault();
-                                            addMessage(newMessage);
+                                            addMessage(newMessage, gifUrl);
                                             reset();
                                             }} >
-                                        <textarea type="text" 
-                                                name="newMessage" 
-                                                value={newMessage} 
-                                                onChange={handleChange}
-                                                placeholder="Share your Thoughts.."
-                                                required
-                                                maxLength="300"
-                                                rows="7" />
+                                       <div className="input-container">
+                                            <textarea type="text" 
+                                                        name="newMessage" 
+                                                        value={newMessage} 
+                                                        onChange={handleChange}
+                                                        placeholder="Share your Thoughts.."
+                                                        required
+                                                        maxLength="300"
+                                                        rows="3"
+                                                        />
+                                            {gifUrl && <img src={gifUrl} className="form-gif" />}
+                                       </div>
                                         <div className="form-button-container">
-                                            <button className="cancelBtn" onClick={handleGifOpen}>Add GIFs</button>
+                                            <button type="button" className="cancelBtn" onClick={handleGifOpen}>Add GIFs</button>
                                             <button type="submit" className="cancelBtn">
                                                 Post
                                             </button>

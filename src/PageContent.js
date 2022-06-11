@@ -7,9 +7,11 @@ const PageContent = (props) => {
         padding: 0,
         margin: 0,
         backgroundColor: "#f2f2f2",
-        height: "100vh",
-        width: "100vw",
-        overflowY:"auto",
+        // height: "100%",
+        minHeight: "90vh",
+        width: "97vw",
+        overflow: "hidden",
+        border:"20px solid purple"
     };
 
     return (

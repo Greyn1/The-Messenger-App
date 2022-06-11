@@ -8,19 +8,22 @@ export const MessageContext = createContext({
     toggleIsModalOpen: () => {},
     removeMessage: () => {},
     isGifSearchOpen: false,
-    toggleIsGifSearchOpen: () => {}
+    toggleIsGifSearchOpen: () => {},
+    gifUrl: "",
+    handleSetGifUrl:() => {}
 });
 
 export const MessageProvider = ({children}) => {
     /* const initialMessages = [
-        {id:1, message:"Hello! Anyone there?......................................................."},
-        {id:2, message:"second message"}
+        {id:1, message:"Hello! Anyone there?, isGifPresent: false, gifUrl:""},
+        {id:2, message:"second message", isGifPresent: false, gifUrl:""}
     ] ; */
 
     const initialMessages = JSON.parse(window.localStorage.getItem("messages") || "[]");
     const [messages, setMessages] = useState(initialMessages);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isGifSearchOpen, setIsGifSearchOpen] = useState(false);
+    const [gifUrl, setGifUrl] = useState("");
 
     useEffect(()=>{
         window.localStorage.setItem("messages",JSON.stringify(messages));
@@ -34,8 +37,12 @@ export const MessageProvider = ({children}) => {
         setIsGifSearchOpen(bool);
     }
 
-    const addMessage = (newMessage) => {
-        setMessages([...messages, { id: uuidv4(), message: newMessage }]);
+    const addMessage = (newMessage, url) => {
+        var isGifPresent = false;
+        if(url){
+            isGifPresent = true;
+        }
+        setMessages([...messages, { id: uuidv4(), message: newMessage, isGifPresent: isGifPresent, gifUrl:url }]);
     };
 
     const removeMessage = (id) => {
@@ -43,7 +50,11 @@ export const MessageProvider = ({children}) => {
         setMessages(updatedMessages);
     }
 
-    const value = {messages, addMessage, isModalOpen, toggleIsModalOpen, removeMessage, isGifSearchOpen, toggleIsGifSearchOpen}
+    const handleSetGifUrl = (url) => {
+        setGifUrl(url);
+    }
+
+    const value = {messages, addMessage, isModalOpen, toggleIsModalOpen, removeMessage, isGifSearchOpen, toggleIsGifSearchOpen, gifUrl, handleSetGifUrl}
     return (
         <MessageContext.Provider value={value}>{children}</MessageContext.Provider>
     );

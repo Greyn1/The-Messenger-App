@@ -7,7 +7,7 @@ import './GifSearch.scss';
 const API_Key = "2YG7Z6hz09v3FBao6v5OPZ5hZq2BYMyg";
 
 const GifSearch = () => {
-    const {isGifSearchOpen, toggleIsGifSearchOpen} = useContext(MessageContext);
+    const {isGifSearchOpen, toggleIsGifSearchOpen, handleSetGifUrl} = useContext(MessageContext);
     const [gifData, setGifData] = useState([]);
     const [searchString, setSearchString] = useState("");
 
@@ -32,11 +32,15 @@ const GifSearch = () => {
         toggleIsGifSearchOpen(!isGifSearchOpen);
     }
 
+    const handleClick = (e) => {
+        handleSetGifUrl(e.target.src)
+    }
+
     const displayGif = () => {
         return gifData.map((gifItem) => {
             return (
                 <div className="gifs">
-                    <img src={gifItem.images.fixed_height.url} />
+                    <img src={gifItem.images.fixed_height.url} onClick={handleClick} />
                 </div>
             )
         })
@@ -45,13 +49,21 @@ const GifSearch = () => {
 
     return (
         <div className="gif-search-container">
-            <span>
-            <HighlightOffIcon fontSize="small" onClick={handleClose} />
-            </span>
-            <form>
-                <input type="text" name="searchString" value={searchString} onChange={handleChange} required />
-                <button onClick={handleSubmit} type="submit">Search</button>
-            </form>
+            <div className="header-container">
+                <span>
+                <HighlightOffIcon fontSize="small" onClick={handleClose}/>
+                </span>
+                <form>
+                    <input className="searchBar" 
+                            type="text" 
+                            name="searchString" 
+                            placeholder="Search Gifs!"
+                            value={searchString} 
+                            onChange={handleChange} 
+                            required />
+                    <button className="searchBtn" onClick={handleSubmit} type="submit">Search</button>
+                </form>
+            </div>
             <div className="gif-container">
                {displayGif()}
             </div>

@@ -11,7 +11,7 @@ const MessageBoard = () => {
             {
                 messages.length ? messagesReversed.map((messageItem) => <MessageCard key={messageItem.id} messageItem={messageItem} />) 
                 :
-                <h1>No Messages To Display</h1>
+                <h1 style={{marginLeft:"30%", color:"#764ba2"}}>No Messages To Display!</h1>
             }
         </div>
     );

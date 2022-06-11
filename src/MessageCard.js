@@ -6,7 +6,7 @@ import Img from './defaultImg2.png';
 import './MessageCard.scss';
 
 const MessageCard = ({messageItem}) => {
-    const {message, id} = messageItem;
+    const {id, message, isGifPresent, gifUrl} = messageItem;
     const {removeMessage} = useContext(MessageContext);
 
     const handleClick = () => {
@@ -19,6 +19,13 @@ const MessageCard = ({messageItem}) => {
             </div>
             <div className='messageBubble'>
                 {message}
+                {
+                    isGifPresent && (
+                        <div className='message-card-gif-container'>
+                            <img src={gifUrl} />
+                        </div>
+                    )
+                }
                 <div className='delete-button-container'>
                         <DeleteIcon className='deleteIcon' fontSize="small" onClick={handleClick}/>
                 </div>

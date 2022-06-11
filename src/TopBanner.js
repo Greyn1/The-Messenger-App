@@ -1,5 +1,3 @@
-/* import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip'; */
 import { useContext } from "react";
 import { MessageContext } from "./contexts/MessageContext";
 import Modal from "./Modal";
@@ -24,7 +22,6 @@ const TopBanner = () => {
                     <span className='img-container'>
                         <img src={`${Img}`} />
                     </span>
-                    {/* <Button variant="outlined">Whats on your mind...</Button> */}
                     <button className="chip" onClick={handleClick}>Whats on your mind...</button>
                 </div>
             </div>
